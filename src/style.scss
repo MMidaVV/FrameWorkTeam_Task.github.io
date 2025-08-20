@@ -1,0 +1,11 @@
+@use './styles/normalize.scss';
+@use './styles/fonts.scss';
+@use './styles/variables.scss';
+@use './styles/mixins.scss';
+
+@use './styles/comps/header';
+@use './styles/comps/main';
+@use './styles/comps/search';
+@use './styles/comps/pagination';
+@use './styles/comps/paintings';
+@use './styles/comps/painting';

@@ -1,0 +1,14 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.application {
+  background-color: var(--color-primary-white);
+  
+  &.dark-theme {
+    background-color: var(--color-primary-black);
+  }
+}
