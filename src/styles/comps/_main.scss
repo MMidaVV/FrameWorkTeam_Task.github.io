@@ -1,43 +1,20 @@
+@use '../mixins.scss' as *;
+
 .main {
+  width: 280px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  margin: auto;
+  margin-top: 27px;
   background-color: var(--color-primary-white);
 
   &.dark-theme {
     background-color: var(--color-primary-black);
   }
 
-  @media (min-width: 320px) {
-    width: 280px;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 20px;
-    margin: auto;
-    margin-top: 27px;
-  }
-
-  @media (min-width: 768px) {
-    width: 728px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin: auto;
-    margin-top: 44px;
-  }
-
-  @media (min-width: 1280px) {
-    width: 1240px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    margin: auto;
-    margin-top: 44px;
-  }
-
-  @media (min-width: 1440px) {
-    width: 1240px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    margin: auto;
-    margin-top: 44px;
-  }
+  @include mediaMain(320px, 280px, repeat(1, 1fr), 20px, 27px);
+  @include mediaMain(768px, 728px, repeat(2, 1fr), 24px, 44px);
+  @include mediaMain(1280px, 1240px, repeat(3, 1fr), 32px, 44px);
+  @include mediaMain(1440px, 1240px, repeat(3, 1fr), 32px, 44px);
 }

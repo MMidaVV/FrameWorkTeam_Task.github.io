@@ -1,3 +1,5 @@
+const { rules } = require('eslint-config-prettier');
+
 require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
@@ -7,4 +9,8 @@ module.exports = {
     '@vue/eslint-config-airbnb-with-typescript',
     '@vue/eslint-config-airbnb',
   ],
+  rules: {
+    'import/prefer-default-export': 'off',
+    'vue/html-indent': 'off'
+  },
 };

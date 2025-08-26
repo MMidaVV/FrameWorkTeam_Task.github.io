@@ -6,8 +6,9 @@
   padding: 0;
 }
 .application {
+  min-height: 100vh;
   background-color: var(--color-primary-white);
-  
+
   &.dark-theme {
     background-color: var(--color-primary-black);
   }

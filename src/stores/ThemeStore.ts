@@ -1,24 +1,27 @@
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 
 export const useThemeStore = defineStore('themeStore', () => {
-    const isDarkTheme = ref(localStorage.getItem('theme') === 'true')
+  const darkTheme = ref(localStorage.getItem('theme') === 'true');
 
-    const toggleTheme = () => {
-        isDarkTheme.value = !isDarkTheme.value
-        updateTheme()
-    }
+  const isDarkTheme = computed(() => darkTheme.value);
 
-    const updateTheme = () => {
-        if (isDarkTheme.value) {
-            localStorage.setItem('theme', 'true')
-        } else {
-            localStorage.setItem('theme', 'false')
-        }
+  const updateTheme = () => {
+    if (darkTheme.value) {
+      localStorage.setItem('theme', 'true');
+    } else {
+      localStorage.setItem('theme', 'false');
     }
+  };
 
-    return {
-        isDarkTheme,
-        toggleTheme
-    }
+  const toggleTheme = () => {
+    darkTheme.value = !darkTheme.value;
+    updateTheme();
+  };
+
+  return {
+    darkTheme,
+    isDarkTheme,
+    toggleTheme,
+  };
 });

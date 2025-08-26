@@ -1,33 +1,19 @@
+@use '../mixins.scss' as *;
+
 .pagination {
   height: 24px;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  grid-column: 1 / -1;
+  margin-bottom: 80px;
+  margin-top: 32px;
 
-  @media (min-width: 320px) {
-    grid-column: 1 / -1;
-    margin-bottom: 80px;
-    margin-top: 32px;
-  }
-
-  @media (min-width: 768px) {
-    grid-column: 1 / -1;
-    margin-bottom: 100px;
-    margin-top: 40px;
-  }
-
-  @media (min-width: 1280px) {
-    grid-column: 1 / -1;
-    margin-bottom: 100px;
-    margin-top: 40px;
-  }
-
-  @media (min-width: 1440px) {
-    grid-column: 1 / -1;
-    margin-bottom: 100px;
-    margin-top: 40px;
-  }
+  @include mediaPagination(320px, 80px, 32px);
+  @include mediaPagination(768px, 100px, 40px);
+  @include mediaPagination(1280px, 100px, 40px);
+  @include mediaPagination(1440px, 100px, 40px);
 
   .button_left,
   .button_right {
@@ -73,18 +59,14 @@
       margin-right: 4px;
 
       span {
-        font-family: 'Inter', sans-serif;
-        font-weight: 300;
-        font-size: 16px;
-        line-height: 140%;
-        color: var(--color-primary-dark-gray);
+        @include text(var(--font-family-Inter), var(--color-primary-dark-gray), 300, 16px, 140%);
         margin-inline: 8px;
       }
 
       &:last-child {
         margin: 0;
       }
-      
+
       &:hover {
         border-bottom: 1px solid var(--color-primary-dark-gray);
         font-weight: 500;
@@ -92,11 +74,7 @@
     }
 
     span {
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-      font-size: 16px;
-      line-height: 140%;
-      color: var(--color-primary-dark-gray);
+      @include text(var(--font-family-Inter), var(--color-primary-dark-gray), 300, 16px, 140%);
       margin-inline: 8px;
     }
 
@@ -116,7 +94,7 @@
           background-color: rgb(26, 24, 24, 1);
         }
       }
-    }  
+    }
 
     .numbers {
       button {

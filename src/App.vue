@@ -1,14 +1,14 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia';
+import { useThemeStore } from '@/stores/ThemeStore.ts';
 import HeaderComp from './comps/HeaderComp.vue';
 import MainComp from './comps/MainComp.vue';
-import { useThemeStore } from '@/stores/ThemeStore';
-import { computed } from 'vue';
 
 const themeStore = useThemeStore();
-const isDarkTheme = computed(() => themeStore.isDarkTheme)
+const { isDarkTheme } = storeToRefs(themeStore);
 </script>
 
-<template >
+<template class="application" :class="isDarkTheme ? 'dark-theme' : ''">
   <div class="application" :class="isDarkTheme ? 'dark-theme' : ''">
     <HeaderComp />
     <MainComp />

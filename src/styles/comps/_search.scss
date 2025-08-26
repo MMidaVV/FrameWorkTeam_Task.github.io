@@ -1,51 +1,7 @@
+@use '../mixins.scss' as *;
+
 .search_bar {
-  @media (min-width: 320px) {
-    grid-column: 1;
-
-    .search {
-      height: 33px;
-
-      input {
-        font-size: 12px;
-      }
-    }
-  }
-
-  @media (min-width: 768px) {
-    grid-column: 2;
-
-    .search {
-      height: 33px;
-
-      input {
-        font-size: 14px;
-      }
-    }
-  }
-
-  @media (min-width: 1280px) {
-    grid-column: 3;
-
-    .search {
-      height: 33px;
-
-      input {
-        font-size: 14px;
-      }
-    }
-  }
-
-  @media (min-width: 1440px) {
-    grid-column: 3;
-
-    .search {
-      height: 33px;
-
-      input {
-        font-size: 14px;
-      }
-    }
-  }
+  grid-column: 1;
 
   .search {
     width: 100%;
@@ -76,12 +32,7 @@
       height: 17px;
       width: 100%;
       margin: 8px 0;
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-      font-size: 12px;
-      line-height: 140%;
-
-      color: var(--color-primary-dark-gray);
+      @include text(var(--font-family-Inter), var(--color-primary-dark-gray), 300, 12px, 140%);
 
       &::placeholder {
         color: var(--color-secondary-gray);
@@ -102,13 +53,19 @@
       cursor: pointer;
 
       img {
-        margin: 0 2px 2px 0;
+        width: 12px;
+        height: 12px;
+        margin: 0;
       }
     }
   }
 
-  &.dark-theme {
+  @include mediaSearch(320px, 1, 33px, 12px);
+  @include mediaSearch(768px, 2, 33px, 14px);
+  @include mediaSearch(1280px, 3, 33px, 14px);
+  @include mediaSearch(1440px, 3, 33px, 14px);
 
+  &.dark-theme {
     .search {
       border: 1px solid var(--color-secondary-black);
       background-color: var(--color-secondary-black);
@@ -129,12 +86,6 @@
 
       button {
         background-color: var(--color-secondary-black);
-
-        img {
-          width: 12px;
-          height: 12px;
-          margin: 0;
-        }
       }
     }
   }

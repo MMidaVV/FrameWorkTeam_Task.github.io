@@ -1,30 +1,38 @@
+@use '../mixins.scss' as *;
+
 .paintings {
-    grid-column: 1 / -1;
-    display: grid;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(6, 185px);
+  gap: 20px;
 
-  @media (min-width: 320px) {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(6, 185px);
-    gap: 20px;
-    
+  @include mediaPaintings(320px, repeat(1, 1fr), repeat(6, 185px), 20px);
+  @include mediaPaintings(768px, repeat(2, 1fr), repeat(3, 220px), 24px);
+  @include mediaPaintings(1280px, repeat(3, 1fr), repeat(2, 260px), 32px);
+  @include mediaPaintings(1440px, repeat(3, 1fr), repeat(2, 260px), 32px);
+}
+
+.zero_paintings {
+  display: block;
+  margin-top: 28px;
+  grid-template-rows: repeat(1, 100px);
+
+  .no_matches {
+    @include text(var(--font-family-Inter), var(--color-primary-dark-gray), 500, 16px, 140%);
   }
 
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 220px);
-    gap: 24px;    
+  .please_try {
+    @include text(var(--font-family-Inter), var(--color-secondary-gray), 300, 14px, 140%);
   }
 
-  @media (min-width: 1280px) {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 260px);
-    gap: 32px;
-    
-  }
+  &.dark-theme {
+    .no_matches {
+      color: var(--color-primary-light-gray);
+    }
 
-  @media (min-width: 1440px) {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 260px);
-    gap: 32px;    
+    .please_try {
+      color: var(--color-secondary-gray);
+    }
   }
 }

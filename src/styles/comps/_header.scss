@@ -1,18 +1,23 @@
+@use '../mixins.scss' as *;
+
 .header {
+  width: 320px;
+  height: 64px;
   background-color: var(--color-primary-white);
   display: flex;
   align-items: center;
   margin: auto;
-  
+
   &.dark-theme {
     background-color: var(--color-primary-black);
-    
+
     button {
       background-color: var(--color-secondary-black);
     }
   }
 
   .top_header {
+    width: 280px;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -45,39 +50,8 @@
     }
   }
 
-  @media (min-width: 320px) {
-    width: 320px;
-    height: 64px;
-
-    .top_header {
-      width: 280px;
-    }
-  }
-
-  @media (min-width: 768px) {
-    width: 768px;
-    height: 88px;
-
-    .top_header {
-      width: 728px;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    width: 1280px;
-    height: 80px;
-
-    .top_header {
-      width: 1240px;
-    }
-  }
-
-  @media (min-width: 1440px) {
-    width: 1440px;
-    height: 80px;
-
-    .top_header {
-      width: 1240px;
-    }
-  }
+  @include mediaHeader(320px, 320px, 64px, 73px, 16px, 280px);
+  @include mediaHeader(768px, 768px, 88px, 73px, 16px, 728px);
+  @include mediaHeader(1280px, 1280px, 80px, 91px, 20px, 1240px);
+  @include mediaHeader(1440px, 1440px, 80px, 91px, 20px, 1240px);
 }

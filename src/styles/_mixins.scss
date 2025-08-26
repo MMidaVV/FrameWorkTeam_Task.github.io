@@ -1,0 +1,61 @@
+@mixin text($font-family, $color, $font-weight, $font-size, $line-height) {
+  font-family: $font-family;
+  color: $color;
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+@mixin mediaHeader($min-width, $width, $height, $logo-width, $logo-height, $top-header-width) {
+  @media (min-width: $min-width) {
+    width: $width;
+    height: $height;
+
+    .logo {
+      width: $logo-width;
+      height: $logo-height;
+    }
+
+    .top_header {
+      width: $top-header-width;
+    }
+  }
+}
+
+@mixin mediaMain($min-width, $width, $grid-template-columns, $gap, $margin-top) {
+  @media (min-width: $min-width) {
+    width: $width;
+    grid-template-columns: $grid-template-columns;
+    gap: $gap;
+    margin-top: $margin-top;
+  }
+}
+
+@mixin mediaPagination($min-width, $margin-bottom, $margin-top) {
+  @media (min-width: $min-width) {
+    margin-bottom: $margin-bottom;
+    margin-top: $margin-top;
+  }
+}
+
+@mixin mediaPaintings($min-width, $grid-template-columns, $grid-template-rows, $gap) {
+  @media (min-width: $min-width) {
+    grid-template-columns: $grid-template-columns;
+    grid-template-rows: $grid-template-rows;
+    gap: $gap;
+  }
+}
+
+@mixin mediaSearch($min-width, $grid-column, $height, $font-size) {
+  @media (min-width: $min-width) {
+    grid-column: $grid-column;
+
+    .search {
+      height: $height;
+
+      input {
+        font-size: $font-size;
+      }
+    }
+  }
+}

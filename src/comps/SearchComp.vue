@@ -1,38 +1,41 @@
 <script setup lang="ts">
-import { ref, watch, computed } from "vue";
-import magnifier from "../images/magnifier.svg";
-import dark_magnifier from "../images/dark_magnifier.svg";
-import white_delete from "../images/delete.svg";
-import dark_delete from "../images/dark_delete.svg";
-import { usePaintingsStore } from "../stores/PaintingsStore";
-import { useThemeStore } from '@/stores/ThemeStore';
+import { ref, watch } from 'vue';
+import { storeToRefs } from 'pinia';
+import { usePaintingsStore } from '@/stores/PaintingsStore.ts';
+import { useThemeStore } from '@/stores/ThemeStore.ts';
+import magnifier from '../images/magnifier.svg';
+import darkMagnifier from '../images/dark_magnifier.svg';
+import whiteDelete from '../images/delete.svg';
+import darkDelete from '../images/dark_delete.svg';
 
 const themeStore = useThemeStore();
-const isDarkTheme = computed(() => themeStore.isDarkTheme)
+const { isDarkTheme } = storeToRefs(themeStore);
 
 const paintingsStore = usePaintingsStore();
-const search_input = ref('');
+const searchInput = ref('');
 
-watch(search_input, (newValue, oldValue) => {
+watch(searchInput, (newValue) => {
   paintingsStore.switchPaintName(newValue);
 });
 
-const deleteSearch = () => { search_input.value = '' };
+const deleteSearch = () => {
+  searchInput.value = '';
+};
 </script>
 
 <template>
   <div class="search_bar" :class="isDarkTheme ? 'dark-theme' : ''">
     <div class="search">
-      <img :src="isDarkTheme ? dark_magnifier : magnifier" />
-      <input 
-        type="text" 
-        name="search_bar" 
-        id="search_bar" 
-        placeholder="Painting title" 
-        v-model="search_input"
+      <img :src="isDarkTheme ? darkMagnifier : magnifier" alt="magnifier" />
+      <input
+        type="text"
+        name="search_bar"
+        id="search_bar"
+        placeholder="Painting title"
+        v-model="searchInput"
       />
-      <button v-on:click="deleteSearch">
-        <img :src="isDarkTheme ? dark_delete : white_delete" />
+      <button type="button" v-on:click="deleteSearch">
+        <img :src="isDarkTheme ? darkDelete : whiteDelete" alt="delete" />
       </button>
     </div>
   </div>
